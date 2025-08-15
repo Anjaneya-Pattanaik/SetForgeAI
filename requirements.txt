@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy
+openai
+faker
+scikit-learn
+rstr
+scipy
+openpyxl
