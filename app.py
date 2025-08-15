@@ -23,494 +23,494 @@ if 'generated_df' not in st.session_state:
     st.session_state.generated_df = None
 if 'generation_params' not in st.session_state:
     st.session_state.generation_params = None
-if 'dark_theme' not in st.session_state:
-    st.session_state.dark_theme = False
+# if 'dark_theme' not in st.session_state:
+#     st.session_state.dark_theme = False
 
-# Dark theme toggle functionality
-def toggle_theme():
-    st.session_state.dark_theme = not st.session_state.dark_theme
-    st.rerun()
+# # Dark theme toggle functionality
+# def toggle_theme():
+#     st.session_state.dark_theme = not st.session_state.dark_theme
+#     st.rerun()
 
-# Apply dark theme styles with comprehensive coverage
-if st.session_state.dark_theme:
-    st.markdown("""
-    <style>
-    /* Main app background */
-    .stApp {
-        background-color: #2b2b2b;
-        color: #e8e8e8;
-    }
+# # Apply dark theme styles with comprehensive coverage
+# if st.session_state.dark_theme:
+#     st.markdown("""
+#     <style>
+#     /* Main app background */
+#     .stApp {
+#         background-color: #2b2b2b;
+#         color: #e8e8e8;
+#     }
     
-    /* Sidebar styling */
-    .css-1d391kg {
-        background-color: #363636;
-    }
+#     /* Sidebar styling */
+#     .css-1d391kg {
+#         background-color: #363636;
+#     }
     
-    /* Main content area */
-    .main .block-container {
-        background-color: #2b2b2b;
-        color: #e8e8e8;
-    }
+#     /* Main content area */
+#     .main .block-container {
+#         background-color: #2b2b2b;
+#         color: #e8e8e8;
+#     }
     
-    /* Headers */
-    h1, h2, h3, h4, h5, h6 {
-        color: #ffffff !important;
-    }
+#     /* Headers */
+#     h1, h2, h3, h4, h5, h6 {
+#         color: #ffffff !important;
+#     }
     
-    /* Text and labels - comprehensive coverage */
-    .stMarkdown, .stText, label, p, span, div {
-        color: #e8e8e8 !important;
-    }
+#     /* Text and labels - comprehensive coverage */
+#     .stMarkdown, .stText, label, p, span, div {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Specific targeting for checkbox and radio labels */
-    .stCheckbox label, .stRadio label, .stCheckbox > label > div, .stRadio > label > div {
-        color: #e8e8e8 !important;
-    }
+#     /* Specific targeting for checkbox and radio labels */
+#     .stCheckbox label, .stRadio label, .stCheckbox > label > div, .stRadio > label > div {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Checkbox and radio button text */
-    .stCheckbox > label > div > span, .stRadio > label > div > span {
-        color: #e8e8e8 !important;
-    }
+#     /* Checkbox and radio button text */
+#     .stCheckbox > label > div > span, .stRadio > label > div > span {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Help text and captions */
-    .stHelp, .caption, small {
-        color: #000000 !important;
-    }
+#     /* Help text and captions */
+#     .stHelp, .caption, small {
+#         color: #000000 !important;
+#     }
     
-    /* HELP BUTTON AND TOOLTIP FIXES */
-    /* Help button styling */
-    button[title*="help"], button[aria-label*="help"], 
-    div[data-testid*="help"], span[title*="help"],
-    .stTooltipIcon, .stHelpTooltip {
-        color: #ffffff !important;
-        background-color: #555555 !important;
-        border: 1px solid #777777 !important;
-    }
+#     /* HELP BUTTON AND TOOLTIP FIXES */
+#     /* Help button styling */
+#     button[title*="help"], button[aria-label*="help"], 
+#     div[data-testid*="help"], span[title*="help"],
+#     .stTooltipIcon, .stHelpTooltip {
+#         color: #ffffff !important;
+#         background-color: #555555 !important;
+#         border: 1px solid #777777 !important;
+#     }
     
-    /* Help button hover */
-    button[title*="help"]:hover, button[aria-label*="help"]:hover,
-    div[data-testid*="help"]:hover, span[title*="help"]:hover {
-        background-color: #666666 !important;
-        color: #ffffff !important;
-    }
+#     /* Help button hover */
+#     button[title*="help"]:hover, button[aria-label*="help"]:hover,
+#     div[data-testid*="help"]:hover, span[title*="help"]:hover {
+#         background-color: #666666 !important;
+#         color: #ffffff !important;
+#     }
     
-    /* Tooltip content */
-    .stTooltip, [data-baseweb="tooltip"], .tooltip-content,
-    div[role="tooltip"], [aria-describedby] {
-        background-color: #ffffff !important;  /* White background */
-        color: #000000 !important;             /* Black text - now readable */
-        border: 1px solid #cccccc !important;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
-    }
+#     /* Tooltip content */
+#     .stTooltip, [data-baseweb="tooltip"], .tooltip-content,
+#     div[role="tooltip"], [aria-describedby] {
+#         background-color: #ffffff !important;  /* White background */
+#         color: #000000 !important;             /* Black text - now readable */
+#         border: 1px solid #cccccc !important;
+#         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+#     }
 
-    /* Additional tooltip targeting */
-    div[data-baseweb="tooltip"] div,
-    div[data-baseweb="tooltip"] p,
-    div[data-baseweb="tooltip"] span,
-    .stTooltip div, .stTooltip p, .stTooltip span {
-        color: #000000 !important;
-        background-color: transparent !important;
-    }
+#     /* Additional tooltip targeting */
+#     div[data-baseweb="tooltip"] div,
+#     div[data-baseweb="tooltip"] p,
+#     div[data-baseweb="tooltip"] span,
+#     .stTooltip div, .stTooltip p, .stTooltip span {
+#         color: #000000 !important;
+#         background-color: transparent !important;
+#     }
     
-    /* Tooltip arrow */
-    .stTooltip::before, [data-baseweb="tooltip"]::before {
-        border-color: #404040 !important;
-    }
+#     /* Tooltip arrow */
+#     .stTooltip::before, [data-baseweb="tooltip"]::before {
+#         border-color: #404040 !important;
+#     }
     
-    /* Streamlit help icons - target by SVG */
-    svg[data-testid="helpIcon"], svg[data-icon="help"],
-    .stHelp svg, .stTooltipIcon svg {
-        color: #000000 !important;
-        fill: #ffffff !important;
-        stroke: #000000 !important;
-    }
+#     /* Streamlit help icons - target by SVG */
+#     svg[data-testid="helpIcon"], svg[data-icon="help"],
+#     .stHelp svg, .stTooltipIcon svg {
+#         color: #000000 !important;
+#         fill: #ffffff !important;
+#         stroke: #000000 !important;
+#     }
     
-    /* Question mark symbols */
-    .stHelp::before, .stTooltipIcon::before {
-        color: #000000 !important;
-    }
+#     /* Question mark symbols */
+#     .stHelp::before, .stTooltipIcon::before {
+#         color: #000000 !important;
+#     }
     
-    /* Input field labels */
-    .stTextInput label, .stNumberInput label, .stSelectbox label, .stSlider label, .stDateInput label {
-        color: #e8e8e8 !important;
-    }
+#     /* Input field labels */
+#     .stTextInput label, .stNumberInput label, .stSelectbox label, .stSlider label, .stDateInput label {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Input fields */
-    .stTextInput > div > div > input,
-    .stNumberInput > div > div > input,
-    .stTextArea > div > div > textarea {
-        background-color: #404040 !important;
-        color: #ffffff !important;
-        border: 1px solid #555555 !important;
-    }
+#     /* Input fields */
+#     .stTextInput > div > div > input,
+#     .stNumberInput > div > div > input,
+#     .stTextArea > div > div > textarea {
+#         background-color: #404040 !important;
+#         color: #ffffff !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    /* Select boxes */
-    .stSelectbox > div > div > div {
-        background-color: #404040 !important;
-        color: #ffffff !important;
-        border: 1px solid #555555 !important;
-    }
+#     /* Select boxes */
+#     .stSelectbox > div > div > div {
+#         background-color: #404040 !important;
+#         color: #ffffff !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    /* Select box options */
-    .stSelectbox > div > div > div > div {
-        background-color: #404040 !important;
-        color: #ffffff !important;
-    }
+#     /* Select box options */
+#     .stSelectbox > div > div > div > div {
+#         background-color: #404040 !important;
+#         color: #ffffff !important;
+#     }
     
-    /* Slider components */
-    .stSlider > div > div > div {
-        background-color: #404040 !important;
-    }
+#     /* Slider components */
+#     .stSlider > div > div > div {
+#         background-color: #404040 !important;
+#     }
     
-    .stSlider > div > div > div > div {
-        background-color: #404040 !important;
-    }
+#     .stSlider > div > div > div > div {
+#         background-color: #404040 !important;
+#     }
     
-    .stSlider .stSlider-value {
-        color: #e8e8e8 !important;
-    }
+#     .stSlider .stSlider-value {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Buttons */
-    .stButton > button {
-        background-color: #4a4a4a !important;
-        color: #ffffff !important;
-        border: 1px solid #666666 !important;
-    }
+#     /* Buttons */
+#     .stButton > button {
+#         background-color: #4a4a4a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #666666 !important;
+#     }
     
-    .stButton > button:hover {
-        background-color: #5a5a5a !important;
-        border: 1px solid #777777 !important;
-    }
+#     .stButton > button:hover {
+#         background-color: #5a5a5a !important;
+#         border: 1px solid #777777 !important;
+#     }
     
-    /* Primary button */
-    .stButton > button[kind="primary"] {
-        background-color: #0066cc !important;
-        color: #ffffff !important;
-        border: 1px solid #0066cc !important;
-    }
+#     /* Primary button */
+#     .stButton > button[kind="primary"] {
+#         background-color: #0066cc !important;
+#         color: #ffffff !important;
+#         border: 1px solid #0066cc !important;
+#     }
     
-    .stButton > button[kind="primary"]:hover {
-        background-color: #0056b3 !important;
-        border: 1px solid #0056b3 !important;
-    }
+#     .stButton > button[kind="primary"]:hover {
+#         background-color: #0056b3 !important;
+#         border: 1px solid #0056b3 !important;
+#     }
     
-    /* Expanders */
-    .streamlit-expanderHeader {
-        background-color: #404040 !important;
-        color: #ffffff !important;
-        border: 1px solid #555555 !important;
-    }
+#     /* Expanders */
+#     .streamlit-expanderHeader {
+#         background-color: #404040 !important;
+#         color: #ffffff !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    .streamlit-expanderContent {
-        background-color: #363636 !important;
-        border: 1px solid #555555 !important;
-    }
+#     .streamlit-expanderContent {
+#         background-color: #363636 !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    /* Expander header text */
-    .streamlit-expanderHeader p {
-        color: #ffffff !important;
-    }
+#     /* Expander header text */
+#     .streamlit-expanderHeader p {
+#         color: #ffffff !important;
+#     }
     
-    /* Expander content text */
-    .streamlit-expanderContent p, .streamlit-expanderContent div, .streamlit-expanderContent span {
-        color: #e8e8e8 !important;
-    }
+#     /* Expander content text */
+#     .streamlit-expanderContent p, .streamlit-expanderContent div, .streamlit-expanderContent span {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Radio button styling */
-    .stRadio > div {
-        background-color: transparent !important;
-    }
+#     /* Radio button styling */
+#     .stRadio > div {
+#         background-color: transparent !important;
+#     }
     
-    .stRadio > div > label {
-        color: #e8e8e8 !important;
-    }
+#     .stRadio > div > label {
+#         color: #e8e8e8 !important;
+#     }
     
-    .stRadio > div > label > div {
-        color: #e8e8e8 !important;
-    }
+#     .stRadio > div > label > div {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Checkbox styling */
-    .stCheckbox > div {
-        background-color: transparent !important;
-    }
+#     /* Checkbox styling */
+#     .stCheckbox > div {
+#         background-color: transparent !important;
+#     }
     
-    .stCheckbox > div > label {
-        color: #e8e8e8 !important;
-    }
+#     .stCheckbox > div > label {
+#         color: #e8e8e8 !important;
+#     }
     
-    .stCheckbox > div > label > div {
-        color: #e8e8e8 !important;
-    }
+#     .stCheckbox > div > label > div {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Dataframes */
-    .dataframe {
-        background-color: #404040 !important;
-        color: #ffffff !important;
-    }
+#     /* Dataframes */
+#     .dataframe {
+#         background-color: #404040 !important;
+#         color: #ffffff !important;
+#     }
     
-    /* Column headers in dataframes */
-    .dataframe th {
-        background-color: #555555 !important;
-        color: #ffffff !important;
-    }
+#     /* Column headers in dataframes */
+#     .dataframe th {
+#         background-color: #555555 !important;
+#         color: #ffffff !important;
+#     }
     
-    /* Dataframe cells */
-    .dataframe td {
-        background-color: #404040 !important;
-        color: #ffffff !important;
-    }
+#     /* Dataframe cells */
+#     .dataframe td {
+#         background-color: #404040 !important;
+#         color: #ffffff !important;
+#     }
     
-    /* Metrics */
-    .metric-container {
-        background-color: #404040 !important;
-        border: 1px solid #555555 !important;
-        border-radius: 5px;
-        padding: 10px;
-    }
+#     /* Metrics */
+#     .metric-container {
+#         background-color: #404040 !important;
+#         border: 1px solid #555555 !important;
+#         border-radius: 5px;
+#         padding: 10px;
+#     }
     
-    /* Metric labels and values */
-    .metric-container label, .metric-container div {
-        color: #e8e8e8 !important;
-    }
+#     /* Metric labels and values */
+#     .metric-container label, .metric-container div {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Tabs */
-    .stTabs [data-baseweb="tab-list"] {
-        background-color: #404040 !important;
-    }
+#     /* Tabs */
+#     .stTabs [data-baseweb="tab-list"] {
+#         background-color: #404040 !important;
+#     }
     
-    .stTabs [data-baseweb="tab"] {
-        background-color: #404040 !important;
-        color: #e8e8e8 !important;
-        border: 1px solid #555555 !important;
-    }
+#     .stTabs [data-baseweb="tab"] {
+#         background-color: #404040 !important;
+#         color: #e8e8e8 !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    .stTabs [aria-selected="true"] {
-        background-color: #0066cc !important;
-        color: #ffffff !important;
-    }
+#     .stTabs [aria-selected="true"] {
+#         background-color: #0066cc !important;
+#         color: #ffffff !important;
+#     }
     
-    /* Tab content */
-    .stTabs > div > div > div > div {
-        color: #e8e8e8 !important;
-    }
+#     /* Tab content */
+#     .stTabs > div > div > div > div {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Info/Warning/Error boxes */
-    .stAlert {
-        background-color: #404040 !important;
-        color: #ffffff !important;
-        border: 1px solid #555555 !important;
-    }
+#     /* Info/Warning/Error boxes */
+#     .stAlert {
+#         background-color: #404040 !important;
+#         color: #ffffff !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    /* Success messages */
-    .stSuccess {
-        background-color: #2d5a2d !important;
-        color: #ffffff !important;
-        border: 1px solid #4a7c4a !important;
-    }
+#     /* Success messages */
+#     .stSuccess {
+#         background-color: #2d5a2d !important;
+#         color: #ffffff !important;
+#         border: 1px solid #4a7c4a !important;
+#     }
     
-    /* Error messages */
-    .stError {
-        background-color: #5a2d2d !important;
-        color: #ffffff !important;
-        border: 1px solid #7c4a4a !important;
-    }
+#     /* Error messages */
+#     .stError {
+#         background-color: #5a2d2d !important;
+#         color: #ffffff !important;
+#         border: 1px solid #7c4a4a !important;
+#     }
     
-    /* Warning messages */
-    .stWarning {
-        background-color: #5a5a2d !important;
-        color: #ffffff !important;
-        border: 1px solid #7c7c4a !important;
-    }
+#     /* Warning messages */
+#     .stWarning {
+#         background-color: #5a5a2d !important;
+#         color: #ffffff !important;
+#         border: 1px solid #7c7c4a !important;
+#     }
     
-    /* Info messages */
-    .stInfo {
-        background-color: #2d4a5a !important;
-        color: #ffffff !important;
-        border: 1px solid #4a6b7c !important;
-    }
+#     /* Info messages */
+#     .stInfo {
+#         background-color: #2d4a5a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #4a6b7c !important;
+#     }
     
-    /* Download buttons */
-    .stDownloadButton > button {
-        background-color: #4a4a4a !important;
-        color: #ffffff !important;
-        border: 1px solid #666666 !important;
-    }
+#     /* Download buttons */
+#     .stDownloadButton > button {
+#         background-color: #4a4a4a !important;
+#         color: #ffffff !important;
+#         border: 1px solid #666666 !important;
+#     }
     
-    .stDownloadButton > button:hover {
-        background-color: #5a5a5a !important;
-    }
+#     .stDownloadButton > button:hover {
+#         background-color: #5a5a5a !important;
+#     }
     
-    /* Dividers */
-    hr {
-        border-color: #555555 !important;
-    }
+#     /* Dividers */
+#     hr {
+#         border-color: #555555 !important;
+#     }
     
-    /* Code blocks */
-    .stCode {
-        background-color: #404040 !important;
-        color: #e8e8e8 !important;
-        border: 1px solid #555555 !important;
-    }
+#     /* Code blocks */
+#     .stCode {
+#         background-color: #404040 !important;
+#         color: #e8e8e8 !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    /* Spinner */
-    .stSpinner > div {
-        border-top-color: #0066cc !important;
-    }
+#     /* Spinner */
+#     .stSpinner > div {
+#         border-top-color: #0066cc !important;
+#     }
     
-    /* Progress bar */
-    .stProgress > div > div > div {
-        background-color: #0066cc !important;
-    }
+#     /* Progress bar */
+#     .stProgress > div > div > div {
+#         background-color: #0066cc !important;
+#     }
     
-    /* Date input */
-    .stDateInput > div > div > input {
-        background-color: #404040 !important;
-        color: #ffffff !important;
-        border: 1px solid #555555 !important;
-    }
+#     /* Date input */
+#     .stDateInput > div > div > input {
+#         background-color: #404040 !important;
+#         color: #ffffff !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    /* File uploader */
-    .stFileUploader > div {
-        background-color: #404040 !important;
-        border: 1px solid #555555 !important;
-    }
+#     /* File uploader */
+#     .stFileUploader > div {
+#         background-color: #404040 !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    /* Specific fixes for form elements */
-    .stForm {
-        background-color: #363636 !important;
-        border: 1px solid #555555 !important;
-    }
+#     /* Specific fixes for form elements */
+#     .stForm {
+#         background-color: #363636 !important;
+#         border: 1px solid #555555 !important;
+#     }
     
-    .stForm label, .stForm p, .stForm div, .stForm span {
-        color: #e8e8e8 !important;
-    }
+#     .stForm label, .stForm p, .stForm div, .stForm span {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Container backgrounds */
-    .element-container {
-        background-color: transparent !important;
-    }
+#     /* Container backgrounds */
+#     .element-container {
+#         background-color: transparent !important;
+#     }
     
-    /* Widget labels - comprehensive targeting */
-    div[data-testid="stMarkdownContainer"] p {
-        color: #e8e8e8 !important;
-    }
+#     /* Widget labels - comprehensive targeting */
+#     div[data-testid="stMarkdownContainer"] p {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Column container text */
-    div[data-testid="column"] {
-        color: #e8e8e8 !important;
-    }
+#     /* Column container text */
+#     div[data-testid="column"] {
+#         color: #e8e8e8 !important;
+#     }
     
-    div[data-testid="column"] p, div[data-testid="column"] span, div[data-testid="column"] div {
-        color: #e8e8e8 !important;
-    }
+#     div[data-testid="column"] p, div[data-testid="column"] span, div[data-testid="column"] div {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Placeholder text in inputs */
-    ::placeholder {
-        color: #888888 !important;
-    }
+#     /* Placeholder text in inputs */
+#     ::placeholder {
+#         color: #888888 !important;
+#     }
     
-    /* Streamlit native labels */
-    .stTextInput label, .stNumberInput label, .stSelectbox label, 
-    .stTextArea label, .stDateInput label, .stTimeInput label,
-    .stSlider label, .stCheckbox label, .stRadio label {
-        color: #e8e8e8 !important;
-    }
+#     /* Streamlit native labels */
+#     .stTextInput label, .stNumberInput label, .stSelectbox label, 
+#     .stTextArea label, .stDateInput label, .stTimeInput label,
+#     .stSlider label, .stCheckbox label, .stRadio label {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Widget container labels */
-    [data-testid="stWidgetLabel"] {
-        color: #e8e8e8 !important;
-    }
+#     /* Widget container labels */
+#     [data-testid="stWidgetLabel"] {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Caption text */
-    [data-testid="caption"] {
-        color: #b8b8b8 !important;
-    }
+#     /* Caption text */
+#     [data-testid="caption"] {
+#         color: #b8b8b8 !important;
+#     }
     
-    /* Markdown container text */
-    [data-testid="stMarkdownContainer"] {
-        color: #e8e8e8 !important;
-    }
+#     /* Markdown container text */
+#     [data-testid="stMarkdownContainer"] {
+#         color: #e8e8e8 !important;
+#     }
     
-    /* Additional text elements */
-    .stSelectbox div[data-baseweb="select"] {
-        background-color: #404040 !important;
-        border-color: #555555 !important;
-    }
+#     /* Additional text elements */
+#     .stSelectbox div[data-baseweb="select"] {
+#         background-color: #404040 !important;
+#         border-color: #555555 !important;
+#     }
     
-    .stSelectbox div[data-baseweb="select"] div {
-        color: #ffffff !important;
-    }
+#     .stSelectbox div[data-baseweb="select"] div {
+#         color: #ffffff !important;
+#     }
     
-    /* More specific help button targeting */
-    /* Target the actual help button element */
-    button[data-testid*="help"], 
-    div[data-testid*="help"] button,
-    .stHelp button,
-    [aria-label*="help"] {
-        background-color: #555555 !important;
-        color: #ffffff !important;
-        border: 1px solid #777777 !important;
-        border-radius: 50% !important;
-    }
+#     /* More specific help button targeting */
+#     /* Target the actual help button element */
+#     button[data-testid*="help"], 
+#     div[data-testid*="help"] button,
+#     .stHelp button,
+#     [aria-label*="help"] {
+#         background-color: #555555 !important;
+#         color: #ffffff !important;
+#         border: 1px solid #777777 !important;
+#         border-radius: 50% !important;
+#     }
     
-    /* Number input increment/decrement buttons */
-    .stNumberInput button, 
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-        background-color: #555555 !important;
-        color: #ffffff !important;
-        border: 1px solid #777777 !important;
-        opacity: 1 !important;
-    }
+#     /* Number input increment/decrement buttons */
+#     .stNumberInput button, 
+#     input[type="number"]::-webkit-inner-spin-button,
+#     input[type="number"]::-webkit-outer-spin-button {
+#         background-color: #555555 !important;
+#         color: #ffffff !important;
+#         border: 1px solid #777777 !important;
+#         opacity: 1 !important;
+#     }
 
-    /* Number input button hover */
-    .stNumberInput button:hover {
-        background-color: #666666 !important;
-        color: #ffffff !important;
-    }
+#     /* Number input button hover */
+#     .stNumberInput button:hover {
+#         background-color: #666666 !important;
+#         color: #ffffff !important;
+#     }
 
-    /* Specific targeting for Streamlit number input controls */
-    .stNumberInput div[data-baseweb="input"] button {
-        background-color: #555555 !important;
-        color: #ffffff !important;
-        border-left: 1px solid #777777 !important;
-    }
+#     /* Specific targeting for Streamlit number input controls */
+#     .stNumberInput div[data-baseweb="input"] button {
+#         background-color: #555555 !important;
+#         color: #ffffff !important;
+#         border-left: 1px solid #777777 !important;
+#     }
 
-    .stNumberInput div[data-baseweb="input"] button:hover {
-        background-color: #666666 !important;
-    }
+#     .stNumberInput div[data-baseweb="input"] button:hover {
+#         background-color: #666666 !important;
+#     }
 
-    /* Plus and minus symbols in buttons */
-    .stNumberInput button span,
-    .stNumberInput button svg {
-        color: #ffffff !important;
-        fill: #ffffff !important;
-    }
+#     /* Plus and minus symbols in buttons */
+#     .stNumberInput button span,
+#     .stNumberInput button svg {
+#         color: #ffffff !important;
+#         fill: #ffffff !important;
+#     }
 
     
-    /* Help button content (question mark) */
-    button[data-testid*="help"] span,
-    div[data-testid*="help"] button span,
-    .stHelp button span {
-        color: #ffffff !important;
-    }
+#     /* Help button content (question mark) */
+#     button[data-testid*="help"] span,
+#     div[data-testid*="help"] button span,
+#     .stHelp button span {
+#         color: #ffffff !important;
+#     }
     
-    /* Force text color for all elements */
-    * {
-        color: #ffffff;
-    }
+#     /* Force text color for all elements */
+#     * {
+#         color: #ffffff;
+#     }
     
-    /* Override for specific elements that should be white */
-    h1, h2, h3, h4, h5, h6, button {
-        color: #ffffff !important;
-    }
+#     /* Override for specific elements that should be white */
+#     h1, h2, h3, h4, h5, h6, button {
+#         color: #ffffff !important;
+#     }
     
-    /* Input text should be white */
-    input, textarea, select {
-        color: #000000 !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+#     /* Input text should be white */
+#     input, textarea, select {
+#         color: #000000 !important;
+#     }
+#     </style>
+#     """, unsafe_allow_html=True)
 
 
 # Header with theme toggle
@@ -519,11 +519,11 @@ with col_header1:
     st.title("🔧 SetForgeAI — Synthetic Data Generator")
     st.markdown("Generate realistic synthetic datasets for machine learning, testing, and development.")
 
-with col_header2:
-    theme_icon = "🌙" if not st.session_state.dark_theme else "☀️"
-    theme_text = "Dark Mode" if not st.session_state.dark_theme else "Light Mode"
-    if st.button(f"{theme_icon} {theme_text}", key="theme_toggle"):
-        toggle_theme()
+# with col_header2:
+#     theme_icon = "🌙" if not st.session_state.dark_theme else "☀️"
+#     theme_text = "Dark Mode" if not st.session_state.dark_theme else "Light Mode"
+#     if st.button(f"{theme_icon} {theme_text}", key="theme_toggle"):
+#         toggle_theme()
 
 # -----------------------------
 # Main Configuration Area
@@ -1143,10 +1143,11 @@ with col2:
 st.divider()
 st.markdown(
     f"""
-    <div style='text-align: center; color: {"#888888" if st.session_state.dark_theme else "gray"}; padding: 20px;'>
+    <div style='text-align: center; color: "gray"; padding: 20px;'>
         <p>SetForgeAI - Advanced Synthetic Data Generator</p>
-        <p>Built with ❤️ using Streamlit | Dark Theme: {'Enabled' if st.session_state.dark_theme else 'Disabled'}</p>
+        <p>Built with ❤️ using Streamlit</p>
     </div>
     """,
     unsafe_allow_html=True
 )
+
