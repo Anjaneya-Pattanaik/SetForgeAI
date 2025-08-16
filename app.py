@@ -517,7 +517,7 @@ st.markdown(
     """
     <div style='text-align: center; padding: 20px 0;'>
         <h1>🔧 SetForgeAI — Synthetic Data Generator</h1>
-        <p style='font-size: 18px; color: #666; margin-top: 10px;'>
+        <p style='font-size: 18px; color: #FFA500; margin-top: 10px;'>
             Generate realistic synthetic datasets for machine learning, testing, and development.
         </p>
     </div>
@@ -1161,6 +1161,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 
