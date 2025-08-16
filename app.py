@@ -1145,9 +1145,10 @@ st.markdown(
     f"""
     <div style='text-align: center; color: "gray"; padding: 20px;'>
         <p>SetForgeAI - Advanced Synthetic Data Generator</p>
-        <p>Built with ❤️ using Streamlit</p>
+        <p>Built with ❤️ using Streamlit by Anjaneya</p>
     </div>
     """,
     unsafe_allow_html=True
 )
+
 
