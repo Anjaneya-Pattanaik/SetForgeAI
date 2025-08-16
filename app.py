@@ -512,12 +512,23 @@ if 'generation_params' not in st.session_state:
 #     </style>
 #     """, unsafe_allow_html=True)
 
-
-# Header with theme toggle
-col_header1, col_header2 = st.columns([4, 1])
-with col_header1:
-    st.title("🔧 SetForgeAI — Synthetic Data Generator")
-    st.markdown("Generate realistic synthetic datasets for machine learning, testing, and development.")
+#Centred Page Title
+st.markdown(
+    """
+    <div style='text-align: center; padding: 20px 0;'>
+        <h1>🔧 SetForgeAI — Synthetic Data Generator</h1>
+        <p style='font-size: 18px; color: #666; margin-top: 10px;'>
+            Generate realistic synthetic datasets for machine learning, testing, and development.
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+## Header with theme toggle
+# col_header1, col_header2 = st.columns([4, 1])
+# with col_header1:
+#     st.title("🔧 SetForgeAI — Synthetic Data Generator")
+#     st.markdown("Generate realistic synthetic datasets for machine learning, testing, and development.")
 
 # with col_header2:
 #     theme_icon = "🌙" if not st.session_state.dark_theme else "☀️"
@@ -1150,5 +1161,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
